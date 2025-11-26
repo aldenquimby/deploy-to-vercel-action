@@ -1,8 +1,12 @@
+## 🍴 Fork Background
+- Forks [BetaHuhn/deploy-to-vercel-action](https://github.com/BetaHuhn/deploy-to-vercel-action) because that repo was abandoned in 2024
+- All `2.x` releases represent net new features
+
 <div align="center">
 
 # Deploy to Vercel Action
 
-[![Node CI](https://github.com/BetaHuhn/deploy-to-vercel-action/workflows/Node%20CI/badge.svg)](https://github.com/BetaHuhn/deploy-to-vercel-action/actions?query=workflow%3A%22Node+CI%22) [![Release CI](https://github.com/BetaHuhn/deploy-to-vercel-action/workflows/Release%20CI/badge.svg)](https://github.com/BetaHuhn/deploy-to-vercel-action/actions?query=workflow%3A%22Release+CI%22) [![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/BetaHuhn/deploy-to-vercel-action/blob/master/LICENSE) ![David](https://img.shields.io/david/betahuhn/deploy-to-vercel-action)
+[![Node CI](https://github.com/aldenquimby/deploy-to-vercel-action/workflows/Node%20CI/badge.svg)](https://github.com/aldenquimby/deploy-to-vercel-action/actions?query=workflow%3A%22Node+CI%22) [![Release CI](https://github.com/aldenquimby/deploy-to-vercel-action/workflows/Release%20CI/badge.svg)](https://github.com/aldenquimby/deploy-to-vercel-action/actions?query=workflow%3A%22Release+CI%22) [![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/aldenquimby/deploy-to-vercel-action/blob/master/LICENSE) ![David](https://img.shields.io/david/betahuhn/deploy-to-vercel-action)
 
 Deploy your project to Vercel using GitHub Actions. Supports PR previews and GitHub deployments.
 
@@ -12,7 +16,7 @@ Deploy your project to Vercel using GitHub Actions. Supports PR previews and Git
 
 ## 👋 Introduction
 
-[deploy-to-vercel-action](https://github.com/BetaHuhn/deploy-to-vercel-action) uses GitHub Actions to deploy your project/site to [Vercel](https://vercel.com). It offers more customization than Vercel's GitHub integration in terms of when to deploy your site. Using GitHub Actions [Events](https://docs.github.com/en/actions/reference/events-that-trigger-workflows) you can choose to deploy every commit, only on new releases or even on a cron schedule. The Action can also deploy every PR and comment on it with a custom preview url. It uses the Vercel CLI and can automatically create a Deployment on GitHub as well.
+[deploy-to-vercel-action](https://github.com/aldenquimby/deploy-to-vercel-action) uses GitHub Actions to deploy your project/site to [Vercel](https://vercel.com). It offers more customization than Vercel's GitHub integration in terms of when to deploy your site. Using GitHub Actions [Events](https://docs.github.com/en/actions/reference/events-that-trigger-workflows) you can choose to deploy every commit, only on new releases or even on a cron schedule. The Action can also deploy every PR and comment on it with a custom preview url. It uses the Vercel CLI and can automatically create a Deployment on GitHub as well.
 
 ## 🚀 Features
 
@@ -46,7 +50,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Deploy to Vercel Action
-        uses: BetaHuhn/deploy-to-vercel-action@v1
+        uses: aldenquimby/deploy-to-vercel-action@v2
         with:
           GITHUB_TOKEN: ${{ secrets.GH_PAT }}
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
@@ -59,20 +63,20 @@ jobs:
 To always use the latest version of the Action add the `latest` tag to the action name like this:
 
 ```yml
-uses: BetaHuhn/deploy-to-vercel-action@latest
+uses: aldenquimby/deploy-to-vercel-action@latest
 ```
 
-If you want to make sure that your Workflow doesn't suddenly break when a new major version is released, use the `v1` tag instead (recommended usage):
+If you want to make sure that your Workflow doesn't suddenly break when a new major version is released, use the `v2` tag instead (recommended usage):
 
 ```yml
-uses: BetaHuhn/deploy-to-vercel-action@v1
+uses: aldenquimby/deploy-to-vercel-action@v2
 ```
 
-With the `v1` tag you will always get the latest non-breaking version which will include potential bug fixes in the future. If you use a specific version, make sure to regularly check if a new version is available, or enable Dependabot.
+With the `v2` tag you will always get the latest non-breaking version which will include potential bug fixes in the future. If you use a specific version, make sure to regularly check if a new version is available, or enable Dependabot.
 
 ## ⚙️ Action Inputs
 
-Here are all the inputs [deploy-to-vercel-action](https://github.com/BetaHuhn/deploy-to-vercel-action) takes:
+Here are all the inputs [deploy-to-vercel-action](https://github.com/aldenquimby/deploy-to-vercel-action) takes:
 
 | Key | Value | Required | Default |
 | ------------- | ------------- | ------------- | ------------- |
@@ -201,7 +205,7 @@ jobs:
           repository: ${{ steps.script.outputs.repo }}
 
       - name: Deploy to Vercel Action
-        uses: BetaHuhn/deploy-to-vercel-action@develop
+        uses: aldenquimby/deploy-to-vercel-action@v2
         with:
           GITHUB_TOKEN: ${{ secrets.GH_PAT }}
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
@@ -218,7 +222,7 @@ Here are a few examples to help you get started!
 
 ### Basic Example
 
-The workflow below will run on every push to master and every time a new PR is created or an existing PR changed. [deploy-to-vercel-action](https://github.com/BetaHuhn/deploy-to-vercel-action) will deploy the master branch to your Vercel production environment and comment on every PR with a preview link to the deployed PR.
+The workflow below will run on every push to master and every time a new PR is created or an existing PR changed. [deploy-to-vercel-action](https://github.com/aldenquimby/deploy-to-vercel-action) will deploy the master branch to your Vercel production environment and comment on every PR with a preview link to the deployed PR.
 
 **.github/workflows/deploy.yml**
 
@@ -237,7 +241,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Deploy to Vercel Action
-        uses: BetaHuhn/deploy-to-vercel-action@v1
+        uses: aldenquimby/deploy-to-vercel-action@v2
         with:
           GITHUB_TOKEN: ${{ secrets.GH_PAT }}
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
@@ -264,7 +268,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Deploy to Vercel Action
-        uses: BetaHuhn/deploy-to-vercel-action@v1
+        uses: aldenquimby/deploy-to-vercel-action@v2
         with:
           GITHUB_TOKEN: ${{ secrets.GH_PAT }}
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
@@ -292,7 +296,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Deploy to Vercel Action
-        uses: BetaHuhn/deploy-to-vercel-action@v1
+        uses: aldenquimby/deploy-to-vercel-action@v2
         with:
           GITHUB_TOKEN: ${{ secrets.GH_PAT }}
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
@@ -302,7 +306,7 @@ jobs:
 
 ### Assign alias domains
 
-If you want, [deploy-to-vercel-action](https://github.com/BetaHuhn/deploy-to-vercel-action) can assign multiple domains to each deployment and also change the PR preview domain:
+If you want, [deploy-to-vercel-action](https://github.com/aldenquimby/deploy-to-vercel-action) can assign multiple domains to each deployment and also change the PR preview domain:
 
 **.github/workflows/deploy.yml**
 
@@ -321,7 +325,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Deploy to Vercel Action
-        uses: BetaHuhn/deploy-to-vercel-action@v1
+        uses: aldenquimby/deploy-to-vercel-action@v2
         with:
           GITHUB_TOKEN: ${{ secrets.GH_PAT }}
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
@@ -358,7 +362,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Deploy to Vercel Action
-        uses: BetaHuhn/deploy-to-vercel-action@v1
+        uses: aldenquimby/deploy-to-vercel-action@v2
         with:
           GITHUB_TOKEN: ${{ secrets.GH_PAT }}
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
@@ -388,7 +392,7 @@ jobs:
         uses: actions/checkout@v2
       - name: Deploy to Vercel Action
         id: vercel-deploy
-        uses: BetaHuhn/deploy-to-vercel-action@v1
+        uses: aldenquimby/deploy-to-vercel-action@v2
         with:
           GITHUB_TOKEN: ${{ secrets.GH_PAT }}
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
@@ -438,7 +442,7 @@ jobs:
         uses: actions/checkout@v2
       # maybe do something else first
       - name: Deploy to Vercel Action
-        uses: BetaHuhn/deploy-to-vercel-action@v1
+        uses: aldenquimby/deploy-to-vercel-action@v2
         with:
           GITHUB_TOKEN: ${{ secrets.GH_PAT }}
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
@@ -483,7 +487,7 @@ jobs:
           repository: ${{ steps.script.outputs.repo }}
 
       - name: Deploy to Vercel Action
-        uses: BetaHuhn/deploy-to-vercel-action@develop
+        uses: aldenquimby/deploy-to-vercel-action@v2
         with:
           GITHUB_TOKEN: ${{ secrets.GH_PAT }}
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
@@ -512,7 +516,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Deploy to Vercel Action
-        uses: BetaHuhn/deploy-to-vercel-action@v1
+        uses: aldenquimby/deploy-to-vercel-action@v2
         with:
           GITHUB_TOKEN: ${{ secrets.GH_PAT }}
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
@@ -523,7 +527,7 @@ jobs:
             SOME_TOKEN="${{ secrets.SOME_TOKEN }}"
 ```
 
-If you have an idea for another use case, [create a discussion](https://github.com/BetaHuhn/deploy-to-vercel-action/discussions/new?category=show-and-tell) and maybe I will add it here!
+If you have an idea for another use case, [create a discussion](https://github.com/aldenquimby/deploy-to-vercel-action/discussions/new?category=show-and-tell) and maybe I will add it here!
 
 ## 💻 Development
 
@@ -533,20 +537,12 @@ The actual source code of this Action is in the `src` folder.
 
 - run `yarn lint` or `npm run lint` to run eslint.
 - run `yarn start` or `npm run start` to run the Action locally.
-- run `yarn build` or `npm run build` to produce a production version of [deploy-to-vercel-action](https://github.com/BetaHuhn/deploy-to-vercel-action) in the `dist` folder.
-
-## ❔ About
-
-This project was developed by me ([@betahuhn](https://github.com/BetaHuhn)) in my free time. If you want to support me:
-
-[![Donate via PayPal](https://img.shields.io/badge/paypal-donate-009cde.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=394RTSBEEEFEE)
-
-[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/F1F81S2RK)
-
-**[deploy-to-vercel-action](https://github.com/BetaHuhn/deploy-to-vercel-action) is in no way affiliated with Vercel.**
+- run `yarn build` or `npm run build` to produce a production version of [deploy-to-vercel-action](https://github.com/aldenquimby/deploy-to-vercel-action) in the `dist` folder.
 
 ## 📄 License
 
 Copyright 2021 Maximilian Schiller
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+**[deploy-to-vercel-action](https://github.com/aldenquimby/deploy-to-vercel-action) is in no way affiliated with Vercel.**
